@@ -6,36 +6,26 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
 
-        File file = new File("text.txt");
-        System.out.println(file.exists()); // file.exists() fragt ab, ob Datei existiert
+        //Kontakte laden
 
-        try {
-            file.createNewFile();
-        } catch (IOException e) {
-            System.out.println("Fehler");
-        }
+        //Kontaktklasse erstellen
+        Contact Martin = new Contact("Martin", "Buder", "01512 899 7385");
+        Contact Vroni = new Contact("Vroni", "Buder", "01512 899 7385");
+        Contact Peter = new Contact("Peter", "Buder", "01512 899 7385");
+        Contactlist phoneBook = new Contactlist();
+        phoneBook.addContact(Martin);
+        phoneBook.addContact(Vroni);
+        phoneBook.addContact(Peter);
+        phoneBook.deleteContact(Peter);
 
-        //in die Datei schreiben
-        try {
-            FileWriter writer = new FileWriter(file);
-            writer.write("Hei ich schreibe einen Text.");
-            writer.close();
-        } catch (IOException e) {
-            System.out.println("Fehler");
-        }
+        //Listenstruktur für Kontakte implementieren
 
-        // datei lesen
-        try {
-          FileReader reader = new FileReader(file);
-          int zeichen = 0;
-          while (zeichen != -1) {
-              zeichen = reader.read();
-              System.out.print((char) zeichen);
-          };
-          reader.close();
-        } catch (IOException e) {
-            System.out.println("Fehler");
-        }
 
+        //Eingabenaufforderung
+        //Logik
+
+        // Kontakte Speichern
     }
+
+
 }
