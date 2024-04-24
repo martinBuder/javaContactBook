@@ -1,26 +1,29 @@
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Contactlist {
 
     // Array für Elemente
-    Contact[] contactList = new Contact[2];
+    // ein Array für immer genau die größe bereitzustellen kostet performance
+    Contact[] contactList = new Contact[10];
 
    // Objektmethode hinhzufügen
 
     public void addContact(Contact contact) {
        int index = 0;
-        boolean addedContact = false;
+       boolean addedContact = false;
        while(index < contactList.length) {
            if(contactList[index] == null) {
                contactList[index] = contact;
-               index = contactList.length;
                addedContact = true;
                break;
            } else {
                index++;
            }
        }
-        if(!addedContact) newArray(contact, contactList.length);
+        if(!addedContact) {
+            newArray(contact);
+        }
         printContact();
     }
 
@@ -35,14 +38,15 @@ public class Contactlist {
                 index++;
             }
         }
+        sortContacts();
         printContact();
     }
 
     // objektmeth Array kopieren
-    private void newArray(Contact contact, int length){
-        Contact[] contactsCopy = new Contact[length + 1];
+    private void newArray(Contact contact){
+        Contact[] contactsCopy = new Contact[contactList.length + 5];
         System.arraycopy(contactList, 0, contactsCopy, 0, contactList.length);
-        contactsCopy[length + 1] = contact;
+        contactsCopy[contactList.length] = contact;
         contactList = contactsCopy;
         printContact();
 
@@ -52,6 +56,7 @@ public class Contactlist {
             System.out.println(Arrays.toString(contactList));
     }
 
-
-
+    private void sortContacts() {
+        Arrays.sort(contactList, Comparator.nullsLast(Comparator.comparing(Contact::getSurname, Comparator.nullsLast(String::compareTo))));
+    }
 }
