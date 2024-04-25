@@ -10,7 +10,7 @@ public class Main {
 
         //Kontaktklasse erstellen
         Contact Martin = new Contact("Martin", "Buder", "01512 899 7385");
-        Contact Peter = new Contact("Peter", "Buder", "01512 899 7385");
+        Contact Peter = new Contact("Peter", "Duder", "01512 899 7385");
         Contact Vroni = new Contact("Vroni", "Buder", "01512 899 7385");
 
         Contactlist phoneBook = new Contactlist();
@@ -23,6 +23,9 @@ public class Main {
 
 
         //Eingabenaufforderung
+        crud dialog = new crud();
+        dialog.openAskDialog();
+
         //Logik
 
         // Kontakte Speichern
